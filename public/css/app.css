@@ -1,0 +1,23 @@
+body {
+    background-color: #f4f6f9;
+}
+
+.page-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card {
+    border: 0;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.required::after {
+    content: " *";
+    color: #dc3545;
+}
+
+.search-form {
+    max-width: 420px;
+    width: 100%;
+}

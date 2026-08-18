@@ -6,7 +6,7 @@
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
                 <h2 class="h5 mb-0">Listado de empleados</h2>
 
-                <form method="GET" action="{{ route('empleados.index') }}" class="d-flex gap-2 align-items-center" style="max-width: 420px; width: 100%;">
+                <form method="GET" action="{{ route('empleados.index') }}" class="d-flex gap-2 align-items-center search-form">
                     <input type="search" name="search" value="{{ old('search', $search) }}" class="form-control" placeholder="Buscar empleado..." aria-label="Buscar empleado">
                     <button type="submit" class="btn btn-outline-primary">Buscar</button>
                     @if ($search !== '')
@@ -45,7 +45,7 @@
                                     <div class="d-flex justify-content-center gap-2">
                                         <a href="{{ route('empleados.show', $empleado) }}" class="btn btn-sm btn-info text-white">Detalle</a>
                                         <a href="{{ route('empleados.edit', $empleado) }}" class="btn btn-sm btn-warning">Editar</a>
-                                        <form action="{{ route('empleados.destroy', $empleado) }}" method="POST" onsubmit="return confirm('¿Desea eliminar este empleado?')">
+                                        <form action="{{ route('empleados.destroy', $empleado) }}" method="POST" data-confirm="¿Desea eliminar este empleado?">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>

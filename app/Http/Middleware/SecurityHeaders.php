@@ -15,20 +15,17 @@ class SecurityHeaders
     {
         $response = $next($request);
 
-        // Basic recommended security headers. Use Report-Only for CSP initially to avoid breaking the app.
+        $response->headers->remove('X-Powered-By');
+        $response->headers->remove('Server');
+
         $headers = [
-            'X-Frame-Options' => 'SAMEORIGIN',
+            'X-Frame-Options' => 'DENY',
             'X-Content-Type-Options' => 'nosniff',
-            'Referrer-Policy' => 'no-referrer-when-downgrade',
-            'X-XSS-Protection' => '1; mode=block',
-            // Permissions-Policy (formerly Feature-Policy) - restrict commonly-abused features
+            'Referrer-Policy' => 'strict-origin-when-cross-origin',
             'Permissions-Policy' => 'geolocation=(), microphone=(), camera=()',
-            // Legacy and modern CSP headers. Use Report-Only to start safely.
-            'X-Content-Security-Policy' => "default-src 'self'; object-src 'none'; frame-ancestors 'self'; base-uri 'self';",
-            'Content-Security-Policy-Report-Only' => "default-src 'self'; object-src 'none'; frame-ancestors 'self'; base-uri 'self';",
+            'Content-Security-Policy' => "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; block-all-mixed-content",
         ];
 
-        // Add HSTS only on secure requests
         if ($request->isSecure()) {
             $headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload';
         }

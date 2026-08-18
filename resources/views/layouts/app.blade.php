@@ -5,23 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestión de empleados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        body {
-            background-color: #f4f6f9;
-        }
-        .page-header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #dee2e6;
-        }
-        .card {
-            border: 0;
-            box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
-        }
-        .required::after {
-            content: " *";
-            color: #dc3545;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <header class="page-header py-4 mb-4">
@@ -71,5 +55,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
